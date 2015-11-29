@@ -61,6 +61,9 @@
 		2E7AEE741C0B060000D7EAF6 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE6A1C0B060000D7EAF6 /* NSObject+MJKeyValue.m */; settings = {ASSET_TAGS = (); }; };
 		2E7AEE751C0B060000D7EAF6 /* NSObject+MJMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE6C1C0B060000D7EAF6 /* NSObject+MJMember.m */; settings = {ASSET_TAGS = (); }; };
 		2E7AEE781C0B0C9C00D7EAF6 /* UIImage+CircleClip.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE771C0B0C9C00D7EAF6 /* UIImage+CircleClip.m */; settings = {ASSET_TAGS = (); }; };
+		2E7AEE7C1C0B173F00D7EAF6 /* ZJPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE7A1C0B173F00D7EAF6 /* ZJPlayingViewController.m */; settings = {ASSET_TAGS = (); }; };
+		2E7AEE7D1C0B173F00D7EAF6 /* ZJPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7AEE7B1C0B173F00D7EAF6 /* ZJPlayingViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		2E7AEE801C0B1DA700D7EAF6 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE7F1C0B1DA700D7EAF6 /* UIView+Frame.m */; settings = {ASSET_TAGS = (); }; };
 		2ECCC1C61C0865AC0067FA78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCC1C51C0865AC0067FA78 /* main.m */; };
 		2ECCC1CF1C0865AC0067FA78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCC1CD1C0865AC0067FA78 /* Main.storyboard */; };
 		2ECCC1D11C0865AC0067FA78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCC1D01C0865AC0067FA78 /* Assets.xcassets */; };
@@ -136,6 +139,11 @@
 		2E7AEE6C1C0B060000D7EAF6 /* NSObject+MJMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJMember.m"; sourceTree = "<group>"; };
 		2E7AEE761C0B0C9C00D7EAF6 /* UIImage+CircleClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+CircleClip.h"; sourceTree = "<group>"; };
 		2E7AEE771C0B0C9C00D7EAF6 /* UIImage+CircleClip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+CircleClip.m"; sourceTree = "<group>"; };
+		2E7AEE791C0B173F00D7EAF6 /* ZJPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPlayingViewController.h; sourceTree = "<group>"; };
+		2E7AEE7A1C0B173F00D7EAF6 /* ZJPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPlayingViewController.m; sourceTree = "<group>"; };
+		2E7AEE7B1C0B173F00D7EAF6 /* ZJPlayingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJPlayingViewController.xib; sourceTree = "<group>"; };
+		2E7AEE7E1C0B1DA700D7EAF6 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		2E7AEE7F1C0B1DA700D7EAF6 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		2ECCC1C11C0865AC0067FA78 /* 音乐播放器.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "音乐播放器.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECCC1C51C0865AC0067FA78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2ECCC1CE1C0865AC0067FA78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -171,6 +179,9 @@
 			children = (
 				2E7AEDF41C0AF5DD00D7EAF6 /* ZJMusicTableViewController.h */,
 				2E7AEDF51C0AF5DD00D7EAF6 /* ZJMusicTableViewController.m */,
+				2E7AEE791C0B173F00D7EAF6 /* ZJPlayingViewController.h */,
+				2E7AEE7A1C0B173F00D7EAF6 /* ZJPlayingViewController.m */,
+				2E7AEE7B1C0B173F00D7EAF6 /* ZJPlayingViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -201,6 +212,8 @@
 			children = (
 				2E7AEE761C0B0C9C00D7EAF6 /* UIImage+CircleClip.h */,
 				2E7AEE771C0B0C9C00D7EAF6 /* UIImage+CircleClip.m */,
+				2E7AEE7E1C0B1DA700D7EAF6 /* UIView+Frame.h */,
+				2E7AEE7F1C0B1DA700D7EAF6 /* UIView+Frame.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -457,6 +470,7 @@
 				2E7AEE491C0AF67400D7EAF6 /* 月半小夜曲.lrc in Resources */,
 				2E7AEE2F1C0AF67400D7EAF6 /* dzq_icon@2x.jpg in Resources */,
 				2E7AEE441C0AF67400D7EAF6 /* 14945107.lrc in Resources */,
+				2E7AEE7D1C0B173F00D7EAF6 /* ZJPlayingViewController.xib in Resources */,
 				2ECCC1D11C0865AC0067FA78 /* Assets.xcassets in Resources */,
 				2E7AEE521C0AF67400D7EAF6 /* 309769.mp3 in Resources */,
 				2E7AEE421C0AF67400D7EAF6 /* 120125029.lrc in Resources */,
@@ -483,12 +497,14 @@
 				2E7AEE581C0AFA7300D7EAF6 /* ZJMusic.m in Sources */,
 				2E7AEE721C0B060000D7EAF6 /* MJTypeEncoding.m in Sources */,
 				2E7AEE731C0B060000D7EAF6 /* NSObject+MJCoding.m in Sources */,
+				2E7AEE801C0B1DA700D7EAF6 /* UIView+Frame.m in Sources */,
 				2E7AEE6F1C0B060000D7EAF6 /* MJMember.m in Sources */,
 				2E7AEE701C0B060000D7EAF6 /* MJMethod.m in Sources */,
 				2E7AEDFD1C0AF5DD00D7EAF6 /* ZJMusicTableViewController.m in Sources */,
 				2E7AEE781C0B0C9C00D7EAF6 /* UIImage+CircleClip.m in Sources */,
 				2E7AEDFE1C0AF5DD00D7EAF6 /* AppDelegate.m in Sources */,
 				2E7AEE751C0B060000D7EAF6 /* NSObject+MJMember.m in Sources */,
+				2E7AEE7C1C0B173F00D7EAF6 /* ZJPlayingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

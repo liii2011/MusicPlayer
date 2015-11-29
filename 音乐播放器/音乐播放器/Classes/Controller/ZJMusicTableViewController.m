@@ -10,10 +10,14 @@
 #import "MJExtension.h"
 #import "ZJMusic.h"
 #import "UIImage+CircleClip.h"
+#import "ZJPlayingViewController.h"
 
 @interface ZJMusicTableViewController ()
 
+/** 所有的音乐 */
 @property (nonatomic, strong) NSArray *musics;
+/** 播放控制器 */
+@property (nonatomic, strong) ZJPlayingViewController *playingVc;
 
 @end
 
@@ -28,11 +32,20 @@
     return _musics;
 }
 
+// 懒加载一个播放控制器
+- (ZJPlayingViewController *)playingVc
+{
+    if (_playingVc == nil) {
+        _playingVc = [[ZJPlayingViewController alloc] init];
+    }
+    return _playingVc;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     // 设置cell 行高
-    self.tableView.rowHeight = 100;
+    self.tableView.rowHeight = 70;
 
 }
 
@@ -66,12 +79,25 @@
     ZJMusic *music = self.musics[indexPath.row];
     
     // 给子控件赋值
-    cell.imageView.image = [UIImage circleClipImageName:music.singerIcon borderWidth:2 borderColor:[UIColor grayColor] writeToFile:nil];
+    cell.imageView.image = [UIImage circleClipImageName:music.singerIcon borderWidth:2 borderColor:[UIColor greenColor] writeToFile:nil];
     cell.textLabel.text = music.name;
     cell.detailTextLabel.text = music.singer;
     
     // 返回cell
     return cell;
 }
+
+#pragma mark - 代理方法
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+    // 隐藏选中状态
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // 显示播放控制器
+    [self.playingVc show];
+}
+
+
+
 
 @end
