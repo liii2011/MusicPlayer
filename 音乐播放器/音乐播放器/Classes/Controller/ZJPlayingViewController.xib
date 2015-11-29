@@ -4,7 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZJPlayingViewController"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZJPlayingViewController">
+            <connections>
+                <outlet property="view" destination="rbB-2q-B1C" id="qfN-xn-fl9"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="rbB-2q-B1C">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -13,7 +17,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_cover_pic_bg" translatesAutoresizingMaskIntoConstraints="NO" id="s83-sj-CnY" userLabel="背景图片">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
                 </imageView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kk5-tl-x1d" userLabel="歌词的View" customClass="HMLrcView">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kk5-tl-x1d" userLabel="歌词的View">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>

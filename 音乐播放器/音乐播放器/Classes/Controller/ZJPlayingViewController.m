@@ -38,7 +38,7 @@
     // 添加播放控制器的弹出界面
         //1 让播放控制器的先再屏幕的最下方
     self.view.originY = self.view.sizeHeight;
-    [UIView animateWithDuration:3 animations:^{
+    [UIView animateWithDuration:1 animations:^{
         //2 让view从下向上画到0的位置
         self.view.originY = 0;
     } completion:^(BOOL finished) {
@@ -53,7 +53,7 @@
     window.userInteractionEnabled = NO;
     
 //    self.view.originY = self.view.sizeHeight;
-    [UIView animateWithDuration:3 animations:^{
+    [UIView animateWithDuration:1 animations:^{
         //2 让view从下向上画到0的位置
         self.view.originY = self.view.sizeHeight;
     } completion:^(BOOL finished) {
