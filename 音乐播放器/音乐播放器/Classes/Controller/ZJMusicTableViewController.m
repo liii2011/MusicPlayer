@@ -7,15 +7,16 @@
 //
 
 #import "ZJMusicTableViewController.h"
-#import "MJExtension.h"
+//#import "MJExtension.h"
 #import "ZJMusic.h"
 #import "UIImage+CircleClip.h"
 #import "ZJPlayingViewController.h"
+#import "ZJMusicTool.h"
 
 @interface ZJMusicTableViewController ()
 
-/** 所有的音乐 */
-@property (nonatomic, strong) NSArray *musics;
+///** 所有的音乐 */
+//@property (nonatomic, strong) NSArray *musics;
 /** 播放控制器 */
 @property (nonatomic, strong) ZJPlayingViewController *playingVc;
 
@@ -23,14 +24,14 @@
 
 @implementation ZJMusicTableViewController
 
-// 懒加载
-- (NSArray *)musics
-{
-    if (_musics == nil) {
-        _musics = [ZJMusic objectArrayWithFilename:@"Musics.plist"];
-    }
-    return _musics;
-}
+//// 懒加载
+//- (NSArray *)musics
+//{
+//    if (_musics == nil) {
+//        _musics = [ZJMusic objectArrayWithFilename:@"Musics.plist"];
+//    }
+//    return _musics;
+//}
 
 // 懒加载一个播放控制器
 - (ZJPlayingViewController *)playingVc
@@ -46,6 +47,10 @@
     
     // 设置cell 行高
     self.tableView.rowHeight = 70;
+    
+    // 返回模型数组
+    NSArray *musics = [ZJMusicTool musics];
+    NSLog(@"%@", musics);
 
 }
 
@@ -62,7 +67,7 @@
 
 // row
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.musics.count;
+    return [ZJMusicTool musics].count;
 }
 
 // cell
@@ -76,7 +81,7 @@
     }
     
     // 拿到模型数据
-    ZJMusic *music = self.musics[indexPath.row];
+    ZJMusic *music = [ZJMusicTool musics][indexPath.row];
     
     // 给子控件赋值
     cell.imageView.image = [UIImage circleClipImageName:music.singerIcon borderWidth:2 borderColor:[UIColor greenColor] writeToFile:nil];

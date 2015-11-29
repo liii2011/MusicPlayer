@@ -64,6 +64,7 @@
 		2E7AEE7C1C0B173F00D7EAF6 /* ZJPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE7A1C0B173F00D7EAF6 /* ZJPlayingViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2E7AEE7D1C0B173F00D7EAF6 /* ZJPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7AEE7B1C0B173F00D7EAF6 /* ZJPlayingViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		2E7AEE801C0B1DA700D7EAF6 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE7F1C0B1DA700D7EAF6 /* UIView+Frame.m */; settings = {ASSET_TAGS = (); }; };
+		2E7AEE831C0B486C00D7EAF6 /* ZJMusicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE821C0B486C00D7EAF6 /* ZJMusicTool.m */; settings = {ASSET_TAGS = (); }; };
 		2ECCC1C61C0865AC0067FA78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCC1C51C0865AC0067FA78 /* main.m */; };
 		2ECCC1CF1C0865AC0067FA78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCC1CD1C0865AC0067FA78 /* Main.storyboard */; };
 		2ECCC1D11C0865AC0067FA78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCC1D01C0865AC0067FA78 /* Assets.xcassets */; };
@@ -144,6 +145,8 @@
 		2E7AEE7B1C0B173F00D7EAF6 /* ZJPlayingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJPlayingViewController.xib; sourceTree = "<group>"; };
 		2E7AEE7E1C0B1DA700D7EAF6 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		2E7AEE7F1C0B1DA700D7EAF6 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		2E7AEE811C0B486C00D7EAF6 /* ZJMusicTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJMusicTool.h; sourceTree = "<group>"; };
+		2E7AEE821C0B486C00D7EAF6 /* ZJMusicTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJMusicTool.m; sourceTree = "<group>"; };
 		2ECCC1C11C0865AC0067FA78 /* 音乐播放器.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "音乐播放器.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ECCC1C51C0865AC0067FA78 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2ECCC1CE1C0865AC0067FA78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -308,6 +311,8 @@
 		2E7AEE551C0AF6AD00D7EAF6 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				2E7AEE811C0B486C00D7EAF6 /* ZJMusicTool.h */,
+				2E7AEE821C0B486C00D7EAF6 /* ZJMusicTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E7AEE831C0B486C00D7EAF6 /* ZJMusicTool.m in Sources */,
 				2E7AEE6E1C0B060000D7EAF6 /* MJIvar.m in Sources */,
 				2E7AEE711C0B060000D7EAF6 /* MJType.m in Sources */,
 				2ECCC1C61C0865AC0067FA78 /* main.m in Sources */,

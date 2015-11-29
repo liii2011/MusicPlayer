@@ -52,7 +52,7 @@
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     window.userInteractionEnabled = NO;
     
-//    self.view.originY = self.view.sizeHeight;
+    // y值从0 --> height
     [UIView animateWithDuration:1 animations:^{
         //2 让view从下向上画到0的位置
         self.view.originY = self.view.sizeHeight;
