@@ -7,9 +7,8 @@
 //
 
 #import "ZJAudioTool.h"
-#import <AVFoundation/AVFoundation.h>
 
-// 静态变量, 只创建一次, 音效字典
+// 音效字典
 static NSMutableDictionary *soundIDs;
 // 音乐字典
 static NSMutableDictionary *musics;
@@ -28,7 +27,7 @@ static NSMutableDictionary *musics;
 }
 
 // 播放音乐
-+ (void)playMusicWithName:(NSString *)musicName
++ (AVAudioPlayer *)playMusicWithName:(NSString *)musicName
 {
     // 断言
     assert(musicName);
@@ -49,6 +48,7 @@ static NSMutableDictionary *musics;
     
     // 播放音乐
     [player play];
+    return player;
 }
 
 // 暂停音乐

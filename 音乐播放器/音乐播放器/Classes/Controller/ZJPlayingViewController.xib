@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZJPlayingViewController">
             <connections>
+                <outlet property="playingTime" destination="u7n-lD-P9Z" id="kJV-6k-WeE"/>
                 <outlet property="singerIcon" destination="s83-sj-CnY" id="mlm-7g-bww"/>
                 <outlet property="singerLabel" destination="NKx-ru-id6" id="Go5-6s-xU1"/>
                 <outlet property="songLabel" destination="6id-eR-m0E" id="eTg-TC-xnd"/>

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ZJAudioTool : NSObject
 
@@ -15,7 +16,7 @@
  *
  *  @param soundName 文件名
  */
-+ (void)playMusicWithName:(NSString *)musicName;
++ (AVAudioPlayer *)playMusicWithName:(NSString *)musicName;
 
 /**
  *  暂停音乐

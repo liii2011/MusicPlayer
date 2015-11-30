@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *singerLabel;
 /** 歌手封面照 */
 @property (weak, nonatomic) IBOutlet UIImageView *singerIcon;
+/** 歌曲播放时间 */
+@property (weak, nonatomic) IBOutlet UILabel *playingTime;
 
 /** 退出 */
 - (IBAction)exit;
@@ -86,8 +88,20 @@
         self.singerIcon.image = [UIImage imageNamed:playingMusic.icon];
         
         // 播放音乐
-        [ZJAudioTool playMusicWithName:playingMusic.filename];
+        AVAudioPlayer *player = [ZJAudioTool playMusicWithName:playingMusic.filename];
+        
+        // 设置播放时间
+        self.playingTime.text = [self stringWithTime:player.duration];
     }
+}
+
+// 把歌曲播放时间, 格式化成 "分钟:秒" 的格式
+- (NSString *)stringWithTime:(NSTimeInterval)time
+{
+    // 计算分钟, 秒数, 返回拼接后的字符串
+    NSInteger minute = time / 60;
+    NSInteger second = (NSInteger)time % 60;
+    return [NSString stringWithFormat:@"%02ld:%02ld", minute, second];
 }
 
 // 停止正在播放的音乐, 清空数据
