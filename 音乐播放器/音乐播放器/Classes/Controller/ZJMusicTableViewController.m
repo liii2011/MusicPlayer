@@ -49,8 +49,8 @@
     self.tableView.rowHeight = 70;
     
     // 返回模型数组
-    NSArray *musics = [ZJMusicTool musics];
-    NSLog(@"%@", musics);
+//    NSArray *musics = [ZJMusicTool musics];
+//    NSLog(@"%@", musics);
 
 }
 
@@ -60,10 +60,6 @@
 }
 
 #pragma mark - Table view data source
-// section
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
 
 // row
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -97,6 +93,10 @@
 {
     // 隐藏选中状态
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    // 设置要播放的音乐数据
+    ZJMusic *music = [ZJMusicTool musics][indexPath.row];
+    [ZJMusicTool setPlayingMusic:music];
     
     // 显示播放控制器
     [self.playingVc show];
