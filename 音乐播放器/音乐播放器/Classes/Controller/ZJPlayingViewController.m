@@ -16,6 +16,8 @@
 
 /** 记录正在播放的音乐 */
 @property (nonatomic, strong) ZJMusic *playingMusic;
+/** 进度定时器 */
+@property (nonatomic, strong) NSTimer *progressTimer;
 
 /** 歌曲名标签 */
 @property (weak, nonatomic) IBOutlet UILabel *songLabel;
@@ -77,8 +79,15 @@
     // 拿到音乐模型
     ZJMusic *playingMusic = [ZJMusicTool playingMusic];
     
-    // 判断如果本次播放的歌曲, 和上次播放的歌曲不一样, 再设置数据
-    if (playingMusic != self.playingMusic) {
+    // 如果是同一首歌, 再次开启定时器
+    if (playingMusic == self.playingMusic) {
+        // 开启定时器
+        [self addProgressTimer];
+        return;
+    }
+    
+//    // 判断如果本次播放的歌曲, 和上次播放的歌曲不一样, 再设置数据
+//    if (playingMusic != self.playingMusic) {
         // 记录本次播放的歌曲
         self.playingMusic = playingMusic;
         
@@ -90,18 +99,12 @@
         // 播放音乐
         AVAudioPlayer *player = [ZJAudioTool playMusicWithName:playingMusic.filename];
         
-        // 设置播放时间
+        // 显示播放时间
         self.playingTime.text = [self stringWithTime:player.duration];
-    }
-}
-
-// 把歌曲播放时间, 格式化成 "分钟:秒" 的格式
-- (NSString *)stringWithTime:(NSTimeInterval)time
-{
-    // 计算分钟, 秒数, 返回拼接后的字符串
-    NSInteger minute = time / 60;
-    NSInteger second = (NSInteger)time % 60;
-    return [NSString stringWithFormat:@"%02ld:%02ld", minute, second];
+        
+        // 开启定时器
+        [self addProgressTimer];
+//    }
 }
 
 // 停止正在播放的音乐, 清空数据
@@ -114,6 +117,9 @@
     
     // 停止正在播放的音乐
     [ZJAudioTool stopMusicWithName:self.playingMusic.filename];
+    
+    // 移除定时器
+    [self removeProgressTimer];
 }
 
 // 退出播放控制器
@@ -128,7 +134,42 @@
     } completion:^(BOOL finished) {
         //3 当播放控制器显示完毕, 再恢复window的交互
         window.userInteractionEnabled = YES;
+        //4 移除定时器
+        [self removeProgressTimer];
     }];
+}
+
+// 把歌曲播放时间, 格式化成 "分钟:秒" 的格式
+- (NSString *)stringWithTime:(NSTimeInterval)time
+{
+    // 计算分钟, 秒数, 返回拼接后的字符串
+    NSInteger minute = time / 60;
+    NSInteger second = (NSInteger)time % 60;
+    return [NSString stringWithFormat:@"%02ld:%02ld", minute, second];
+}
+
+// 添加定时器
+- (void)addProgressTimer
+{
+    // 给当前控制器添加定时器
+    self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateInfo) userInfo:nil repeats:YES];
+    // 把定时器添加到主运行循环
+    [[NSRunLoop mainRunLoop] addTimer:self.progressTimer forMode:NSRunLoopCommonModes];
+}
+
+// 移除定时器
+- (void)removeProgressTimer
+{
+    // 关闭定时器
+    [self.progressTimer invalidate];
+    // 回收指针
+    self.progressTimer = nil;
+}
+
+// 更新数据
+- (void)updateInfo
+{
+    NSLog(@"更新数据...");
 }
 
 @end
