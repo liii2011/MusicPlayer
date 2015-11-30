@@ -10,6 +10,7 @@
 #import "UIView+Frame.h"
 #import "ZJMusicTool.h"
 #import "ZJMusic.h"
+#import "ZJAudioTool.h"
 
 @interface ZJPlayingViewController ()
 
@@ -83,7 +84,9 @@
         self.songLabel.text = playingMusic.name;
         self.singerLabel.text = playingMusic.singer;
         self.singerIcon.image = [UIImage imageNamed:playingMusic.icon];
-        NSLog(@"%@---%@", playingMusic.name, playingMusic.singer);
+        
+        // 播放音乐
+        [ZJAudioTool playMusicWithName:playingMusic.filename];
     }
 }
 
@@ -94,7 +97,9 @@
     self.songLabel.text = nil;
     self.singerLabel.text = nil;
     self.singerIcon.image = [UIImage imageNamed:@"play_cover_pic_bg"];
-
+    
+    // 停止正在播放的音乐
+    [ZJAudioTool stopMusicWithName:self.playingMusic.filename];
 }
 
 // 退出播放控制器
