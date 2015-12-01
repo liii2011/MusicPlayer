@@ -34,8 +34,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *sliderButton;
 /** 滑块左边的约束 */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sliderLeftConstraint;
-
-
+/** 拖动的时候, 显示时间标签 */
+@property (weak, nonatomic) IBOutlet UILabel *showTimeLabel;
 
 /** 点击了退出, 返回主界面 */
 - (IBAction)exit;
@@ -51,6 +51,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // 设置时间标签的圆角
+    self.showTimeLabel.layer.cornerRadius = 5;
+    self.showTimeLabel.layer.masksToBounds = YES;
+    // self.showTimeLabel.clipsToBounds = YES;
 }
 
 // 显示播放控制器
@@ -212,7 +217,7 @@
         constant = 0;
     // 如果点在右边的无效位置
     } else if (tapPoint.x >= viewWidth - sliderButtonWidth * 0.5) {
-        constant = viewWidth - sliderButtonWidth - 1;
+        constant = viewWidth - sliderButtonWidth;
     // 如果点在有效位置
     } else {
         constant = tapPoint.x - sliderButtonWidth * 0.5;
@@ -230,17 +235,17 @@
 
 /** 拖动手势 */
 - (IBAction)panSliderButton:(UIPanGestureRecognizer *)sender {
-    // 获取拖拽的位移的增量
+    // 获取拖拽的位移的"增量", 并把上次拖拽的位置, 作为起点
     CGPoint panPoint = [sender translationInView:sender.view];
-    // 把上次拖拽的位置, 作为起点
     [sender setTranslation:CGPointZero inView:sender.view];
     
-    if (self.sliderLeftConstraint.constant + panPoint.x <= self.sliderButton.sizeWidth) {
+    // 边界判断
+    if (self.sliderLeftConstraint.constant + panPoint.x <= 0) {
         // 如果点在左边的无效位置
-        self.sliderLeftConstraint.constant = self.sliderButton.sizeWidth;
+        self.sliderLeftConstraint.constant = 0;
     } else if (self.sliderLeftConstraint.constant + panPoint.x >= self.view.sizeWidth - self.sliderButton.sizeWidth) {
         // 如果点在右边的无效位置
-        self.sliderLeftConstraint.constant = self.view.sizeWidth - self.sliderButton.sizeWidth - 1;
+        self.sliderLeftConstraint.constant = self.view.sizeWidth - self.sliderButton.sizeWidth;
     } else {
         // 改变滑块左边的约束, 让滑块移动
         self.sliderLeftConstraint.constant += panPoint.x;
@@ -254,37 +259,23 @@
     NSString *currentTimeStr = [self stringWithTime:currentTime];
     // 设置播放时间
     [self.sliderButton setTitle:currentTimeStr forState:UIControlStateNormal];
+    // 设置时间标签
+    self.showTimeLabel.text = currentTimeStr;
     
     // 拖拽开始的时候移除定时器
     if (sender.state == UIGestureRecognizerStateBegan) {
         // 移除定时器
         [self removeProgressTimer];
+        // 显示时间标签
+        self.showTimeLabel.hidden = NO;
     } else if (sender.state == UIGestureRecognizerStateEnded) {
         // 设置播放位置
         self.currentPlayer.currentTime = currentTime;
         // 添加定时器
         [self addProgressTimer];
+        // 隐藏时间标签
+        self.showTimeLabel.hidden = YES;
     }
 }
-
-
-/*
- //1 边界判断
- //1.1 进度条左边的有效点击位置 = 滑块宽度的一半
- //2.2 右边的有效点击位置 = 屏幕宽度 - 按钮宽度的一半
- CGFloat viewWidth = self.view.sizeWidth;
- CGFloat sliderWidth = self.sliderButton.sizeWidth;
- CGFloat constant = self.sliderLeftConstraint.constant;
- if (constant + panPoint.x <= sliderWidth * 0.5) {
- // 如果点在左边的无效位置
- constant = sliderWidth * 0.5;
- } else if (constant + panPoint.x >= viewWidth - sliderWidth) {
- // 如果点在右边的无效位置
- constant = viewWidth - sliderWidth * 0.5;
- } else {
- // 如果点在有效位置
- constant = panPoint.x - sliderWidth * 0.5;
- }
- */
 
 @end
