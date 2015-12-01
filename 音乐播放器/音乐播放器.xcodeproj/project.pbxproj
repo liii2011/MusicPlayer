@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E5A09411C0DDE9C00F64E84 /* DRNRealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A093E1C0DDE9C00F64E84 /* DRNRealTimeBlurView.m */; settings = {ASSET_TAGS = (); }; };
+		2E5A09421C0DDE9C00F64E84 /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A09401C0DDE9C00F64E84 /* UIImage+BoxBlur.m */; settings = {ASSET_TAGS = (); }; };
+		2E5A09451C0DDEC700F64E84 /* ZJLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A09441C0DDEC700F64E84 /* ZJLrcView.m */; settings = {ASSET_TAGS = (); }; };
 		2E7AEDFD1C0AF5DD00D7EAF6 /* ZJMusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEDF51C0AF5DD00D7EAF6 /* ZJMusicTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2E7AEDFE1C0AF5DD00D7EAF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEDF91C0AF5DD00D7EAF6 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
 		2E7AEE2C1C0AF67400D7EAF6 /* bb@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2E7AEE011C0AF67400D7EAF6 /* bb@2x.jpg */; settings = {ASSET_TAGS = (); }; };
@@ -73,6 +76,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E5A093D1C0DDE9C00F64E84 /* DRNRealTimeBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNRealTimeBlurView.h; sourceTree = "<group>"; };
+		2E5A093E1C0DDE9C00F64E84 /* DRNRealTimeBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNRealTimeBlurView.m; sourceTree = "<group>"; };
+		2E5A093F1C0DDE9C00F64E84 /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BoxBlur.h"; sourceTree = "<group>"; };
+		2E5A09401C0DDE9C00F64E84 /* UIImage+BoxBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BoxBlur.m"; sourceTree = "<group>"; };
+		2E5A09431C0DDEC700F64E84 /* ZJLrcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJLrcView.h; sourceTree = "<group>"; };
+		2E5A09441C0DDEC700F64E84 /* ZJLrcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJLrcView.m; sourceTree = "<group>"; };
 		2E7AEDF41C0AF5DD00D7EAF6 /* ZJMusicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJMusicTableViewController.h; sourceTree = "<group>"; };
 		2E7AEDF51C0AF5DD00D7EAF6 /* ZJMusicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJMusicTableViewController.m; sourceTree = "<group>"; };
 		2E7AEDF81C0AF5DD00D7EAF6 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -169,6 +178,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E5A093C1C0DDE9C00F64E84 /* DRNRealTimeBlur */ = {
+			isa = PBXGroup;
+			children = (
+				2E5A093D1C0DDE9C00F64E84 /* DRNRealTimeBlurView.h */,
+				2E5A093E1C0DDE9C00F64E84 /* DRNRealTimeBlurView.m */,
+				2E5A093F1C0DDE9C00F64E84 /* UIImage+BoxBlur.h */,
+				2E5A09401C0DDE9C00F64E84 /* UIImage+BoxBlur.m */,
+			);
+			path = DRNRealTimeBlur;
+			sourceTree = "<group>";
+		};
 		2E7AEDF21C0AF5DD00D7EAF6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +247,7 @@
 		2E7AEDFB1C0AF5DD00D7EAF6 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				2E5A093C1C0DDE9C00F64E84 /* DRNRealTimeBlur */,
 				2E7AEE591C0B060000D7EAF6 /* MJExtension */,
 			);
 			path = Lib;
@@ -235,6 +256,8 @@
 		2E7AEDFC1C0AF5DD00D7EAF6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2E5A09431C0DDEC700F64E84 /* ZJLrcView.h */,
+				2E5A09441C0DDEC700F64E84 /* ZJLrcView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -503,6 +526,7 @@
 				2E7AEE6E1C0B060000D7EAF6 /* MJIvar.m in Sources */,
 				2E7AEE711C0B060000D7EAF6 /* MJType.m in Sources */,
 				2ECCC1C61C0865AC0067FA78 /* main.m in Sources */,
+				2E5A09411C0DDE9C00F64E84 /* DRNRealTimeBlurView.m in Sources */,
 				2E7AEE6D1C0B060000D7EAF6 /* MJArgument.m in Sources */,
 				2E7AEE741C0B060000D7EAF6 /* NSObject+MJKeyValue.m in Sources */,
 				2E7AEE861C0C683F00D7EAF6 /* ZJAudioTool.m in Sources */,
@@ -512,10 +536,12 @@
 				2E7AEE801C0B1DA700D7EAF6 /* UIView+Frame.m in Sources */,
 				2E7AEE6F1C0B060000D7EAF6 /* MJMember.m in Sources */,
 				2E7AEE701C0B060000D7EAF6 /* MJMethod.m in Sources */,
+				2E5A09451C0DDEC700F64E84 /* ZJLrcView.m in Sources */,
 				2E7AEDFD1C0AF5DD00D7EAF6 /* ZJMusicTableViewController.m in Sources */,
 				2E7AEE781C0B0C9C00D7EAF6 /* UIImage+CircleClip.m in Sources */,
 				2E7AEDFE1C0AF5DD00D7EAF6 /* AppDelegate.m in Sources */,
 				2E7AEE751C0B060000D7EAF6 /* NSObject+MJMember.m in Sources */,
+				2E5A09421C0DDE9C00F64E84 /* UIImage+BoxBlur.m in Sources */,
 				2E7AEE7C1C0B173F00D7EAF6 /* ZJPlayingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

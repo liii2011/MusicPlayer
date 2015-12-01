@@ -11,6 +11,7 @@
 #import "ZJMusicTool.h"
 #import "ZJMusic.h"
 #import "ZJAudioTool.h"
+#import "ZJLrcView.h"
 
 @interface ZJPlayingViewController () <AVAudioPlayerDelegate>
 
@@ -35,6 +36,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *showTimeLabel;
 /** 播放或暂停按钮 */
 @property (weak, nonatomic) IBOutlet UIButton *playOrPauseButton;
+/** 歌词View */
+@property (weak, nonatomic) IBOutlet ZJLrcView *lrcView;
 
 
 /** 滑块左边的约束 */
@@ -67,6 +70,10 @@
  */
 - (IBAction)nextButtonClick;
 
+/**
+ *  歌词和图片按钮的点击
+ */
+- (IBAction)lrcOrPicButton:(UIButton *)sender;
 
 @end
 
@@ -351,6 +358,12 @@
     [ZJMusicTool nextMusic];
     // 开始播放音乐
     [self startPlayingMusic];
+}
+
+// 歌词和图片按钮的点击事件
+- (IBAction)lrcOrPicButton:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    self.lrcView.hidden = !self.lrcView.hidden;
 }
 
 #pragma mark - AVAudioPlayerDelegate代理方法

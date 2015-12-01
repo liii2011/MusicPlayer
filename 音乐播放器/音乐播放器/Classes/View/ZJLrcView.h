@@ -1,0 +1,13 @@
+//
+//  ZJLrcView.h
+//  音乐播放器
+//
+//  Created by liii on 15/12/1.
+//  Copyright © 2015年 liii. All rights reserved.
+//
+
+#import "DRNRealTimeBlurView.h"
+
+@interface ZJLrcView : DRNRealTimeBlurView
+
+@end

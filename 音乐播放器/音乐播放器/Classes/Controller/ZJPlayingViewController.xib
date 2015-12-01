@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZJPlayingViewController">
             <connections>
+                <outlet property="lrcView" destination="kaq-Xt-iFm" id="OCT-vX-zWC"/>
                 <outlet property="playOrPauseButton" destination="Px2-0Q-wHP" id="RUw-18-dAp"/>
                 <outlet property="playingTime" destination="u7n-lD-P9Z" id="kJV-6k-WeE"/>
                 <outlet property="showTimeLabel" destination="5EW-Dw-qQx" id="dfL-Dn-fGc"/>
@@ -25,7 +26,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_cover_pic_bg" translatesAutoresizingMaskIntoConstraints="NO" id="s83-sj-CnY" userLabel="背景图片">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
                 </imageView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kk5-tl-x1d" userLabel="歌词的View">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaq-Xt-iFm" userLabel="歌词View" customClass="ZJLrcView">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -48,6 +49,9 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" image="pic_normal"/>
+                    <connections>
+                        <action selector="lrcOrPicButton:" destination="-1" eventType="touchUpInside" id="qRg-3B-yYB"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMQ-aY-ilE" userLabel="底部控制器View">
                     <rect key="frame" x="0.0" y="440" width="600" height="160"/>
@@ -184,20 +188,20 @@
                 <constraint firstAttribute="trailing" secondItem="QZh-I0-rSW" secondAttribute="trailing" constant="10" id="9mV-b2-QGn"/>
                 <constraint firstAttribute="bottom" secondItem="s83-sj-CnY" secondAttribute="bottom" constant="160" id="IsK-nf-ZBQ"/>
                 <constraint firstItem="AMQ-aY-ilE" firstAttribute="leading" secondItem="rbB-2q-B1C" secondAttribute="leading" id="Jy0-js-P0Y"/>
-                <constraint firstAttribute="trailing" secondItem="Kk5-tl-x1d" secondAttribute="trailing" id="NQB-bb-zyL"/>
                 <constraint firstItem="QZh-I0-rSW" firstAttribute="height" secondItem="84m-8T-IfX" secondAttribute="height" id="P6K-mu-xq9"/>
+                <constraint firstItem="kaq-Xt-iFm" firstAttribute="leading" secondItem="rbB-2q-B1C" secondAttribute="leading" id="S3M-po-gBi"/>
                 <constraint firstAttribute="trailing" secondItem="s83-sj-CnY" secondAttribute="trailing" id="Sn2-d8-4Bk"/>
                 <constraint firstItem="QZh-I0-rSW" firstAttribute="top" secondItem="rbB-2q-B1C" secondAttribute="top" constant="30" id="Z8x-gt-5EH"/>
                 <constraint firstItem="84m-8T-IfX" firstAttribute="top" secondItem="rbB-2q-B1C" secondAttribute="top" constant="30" id="bVo-Oh-7Vl"/>
-                <constraint firstItem="Kk5-tl-x1d" firstAttribute="top" secondItem="rbB-2q-B1C" secondAttribute="top" id="bzw-xq-fud"/>
-                <constraint firstItem="Kk5-tl-x1d" firstAttribute="leading" secondItem="rbB-2q-B1C" secondAttribute="leading" id="cdx-32-ugc"/>
+                <constraint firstAttribute="trailing" secondItem="kaq-Xt-iFm" secondAttribute="trailing" id="j2s-sI-xJy"/>
                 <constraint firstItem="84m-8T-IfX" firstAttribute="leading" secondItem="rbB-2q-B1C" secondAttribute="leading" constant="10" id="jy0-lZ-wF1"/>
                 <constraint firstAttribute="trailing" secondItem="AMQ-aY-ilE" secondAttribute="trailing" id="me5-i5-UDd"/>
                 <constraint firstItem="s83-sj-CnY" firstAttribute="top" secondItem="rbB-2q-B1C" secondAttribute="top" id="mzl-ap-bjp"/>
+                <constraint firstItem="kaq-Xt-iFm" firstAttribute="top" secondItem="rbB-2q-B1C" secondAttribute="top" id="qJC-a8-Jgy"/>
                 <constraint firstItem="QZh-I0-rSW" firstAttribute="width" secondItem="84m-8T-IfX" secondAttribute="width" id="u81-zW-i39"/>
-                <constraint firstItem="AMQ-aY-ilE" firstAttribute="top" secondItem="Kk5-tl-x1d" secondAttribute="bottom" id="uVo-9P-Tlk"/>
                 <constraint firstItem="s83-sj-CnY" firstAttribute="leading" secondItem="rbB-2q-B1C" secondAttribute="leading" id="yLw-Ck-neR"/>
                 <constraint firstAttribute="bottom" secondItem="AMQ-aY-ilE" secondAttribute="bottom" id="yRK-ZT-ZiJ"/>
+                <constraint firstItem="AMQ-aY-ilE" firstAttribute="top" secondItem="kaq-Xt-iFm" secondAttribute="bottom" id="yRt-ps-oQ6"/>
             </constraints>
             <point key="canvasLocation" x="240" y="285"/>
         </view>
