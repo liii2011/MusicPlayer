@@ -36,8 +36,14 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *sliderLeftConstraint;
 
 
-/** 退出 */
+
+/** 点击了退出, 返回主界面 */
 - (IBAction)exit;
+
+/** 监听tip点击手势 */
+- (IBAction)tapProgressBackground:(UITapGestureRecognizer *)sender;
+/** 监听pan点击手势 */
+- (IBAction)panSliderButton:(UIPanGestureRecognizer *)sender;
 
 @end
 
@@ -174,19 +180,111 @@
     self.progressTimer = nil;
 }
 
-#pragma mark - 更新进度条
+#pragma mark - 进度条相关方法
 
 // 更新数据
 - (void)updateInfo
 {
-    // 计算音乐播放的比例, 更新滑块的位置
+    // 根据播放时间计算播放比例
     AVAudioPlayer *player = self.currentPlayer;
     CGFloat progressRatio = player.currentTime / player.duration;
+    
+    // 根据播放比例更新滑块左边的约束, 使滑块移动
     self.sliderLeftConstraint.constant = progressRatio * (self.view.sizeWidth - self.sliderButton.sizeWidth);
     
-    // 把时间显示到滑块
+    // 更新滑块上的时间
     NSString *currentTime = [self stringWithTime:self.currentPlayer.currentTime];
     [self.sliderButton setTitle:currentTime forState:UIControlStateNormal];
 }
+
+// 点击手势
+- (IBAction)tapProgressBackground:(UITapGestureRecognizer *)sender {
+    // 获取点击位置
+    CGPoint tapPoint = [sender locationInView:sender.view];
+    
+    // 进度条左边的有效点击位置 = 滑块宽度的一半; 右边的有效点击位置 = 屏幕宽度 - 按钮宽度的一半
+    CGFloat viewWidth = self.view.sizeWidth;
+    CGFloat sliderButtonWidth = self.sliderButton.sizeWidth;
+    CGFloat constant = self.sliderLeftConstraint.constant;
+    
+    // 如果点在左边的无效位置
+    if (tapPoint.x <= sliderButtonWidth * 0.5) {
+        constant = 0;
+    // 如果点在右边的无效位置
+    } else if (tapPoint.x >= viewWidth - sliderButtonWidth * 0.5) {
+        constant = viewWidth - sliderButtonWidth - 1;
+    // 如果点在有效位置
+    } else {
+        constant = tapPoint.x - sliderButtonWidth * 0.5;
+    }
+    
+    // 计算点击位置占总长度的比例
+    CGFloat progressRatio = constant / (viewWidth - sliderButtonWidth);
+    
+    // 根据比例计算播放前当前播放时间
+    self.currentPlayer.currentTime = progressRatio * self.currentPlayer.duration;
+    
+    // 手动更新一下进度条, 使文字立刻改变
+    [self updateInfo];
+}
+
+/** 拖动手势 */
+- (IBAction)panSliderButton:(UIPanGestureRecognizer *)sender {
+    // 获取拖拽的位移的增量
+    CGPoint panPoint = [sender translationInView:sender.view];
+    // 把上次拖拽的位置, 作为起点
+    [sender setTranslation:CGPointZero inView:sender.view];
+    
+    if (self.sliderLeftConstraint.constant + panPoint.x <= self.sliderButton.sizeWidth) {
+        // 如果点在左边的无效位置
+        self.sliderLeftConstraint.constant = self.sliderButton.sizeWidth;
+    } else if (self.sliderLeftConstraint.constant + panPoint.x >= self.view.sizeWidth - self.sliderButton.sizeWidth) {
+        // 如果点在右边的无效位置
+        self.sliderLeftConstraint.constant = self.view.sizeWidth - self.sliderButton.sizeWidth - 1;
+    } else {
+        // 改变滑块左边的约束, 让滑块移动
+        self.sliderLeftConstraint.constant += panPoint.x;
+    }
+    
+    // 计算播放比例
+    CGFloat progressRatio = self.sliderLeftConstraint.constant / (self.view.sizeWidth - self.sliderButton.sizeWidth);
+    // 计算播放时间
+    CGFloat currentTime = progressRatio * self.currentPlayer.duration;
+    // 转换为字符串
+    NSString *currentTimeStr = [self stringWithTime:currentTime];
+    // 设置播放时间
+    [self.sliderButton setTitle:currentTimeStr forState:UIControlStateNormal];
+    
+    // 拖拽开始的时候移除定时器
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        // 移除定时器
+        [self removeProgressTimer];
+    } else if (sender.state == UIGestureRecognizerStateEnded) {
+        // 设置播放位置
+        self.currentPlayer.currentTime = currentTime;
+        // 添加定时器
+        [self addProgressTimer];
+    }
+}
+
+
+/*
+ //1 边界判断
+ //1.1 进度条左边的有效点击位置 = 滑块宽度的一半
+ //2.2 右边的有效点击位置 = 屏幕宽度 - 按钮宽度的一半
+ CGFloat viewWidth = self.view.sizeWidth;
+ CGFloat sliderWidth = self.sliderButton.sizeWidth;
+ CGFloat constant = self.sliderLeftConstraint.constant;
+ if (constant + panPoint.x <= sliderWidth * 0.5) {
+ // 如果点在左边的无效位置
+ constant = sliderWidth * 0.5;
+ } else if (constant + panPoint.x >= viewWidth - sliderWidth) {
+ // 如果点在右边的无效位置
+ constant = viewWidth - sliderWidth * 0.5;
+ } else {
+ // 如果点在有效位置
+ constant = panPoint.x - sliderWidth * 0.5;
+ }
+ */
 
 @end

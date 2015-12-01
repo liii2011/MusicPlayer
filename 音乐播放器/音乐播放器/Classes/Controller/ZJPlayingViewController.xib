@@ -92,6 +92,9 @@
                                 <constraint firstAttribute="height" constant="5" id="toh-ae-8QV"/>
                                 <constraint firstItem="ccX-V4-Drd" firstAttribute="top" secondItem="5Jg-oF-ID8" secondAttribute="top" id="xzT-Jp-2Hw"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="EBB-Dq-mSR" appends="YES" id="m35-OR-HRx"/>
+                            </connections>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtW-LO-nbw" userLabel="拖动按钮">
                             <rect key="frame" x="0.0" y="47" width="41" height="21"/>
@@ -104,6 +107,9 @@
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="U6H-I9-TDZ" appends="YES" id="3dd-gl-bh9"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李克勤" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKx-ru-id6" userLabel="歌手Label">
                             <rect key="frame" x="8" y="31" width="39" height="16"/>
@@ -184,6 +190,16 @@
             </constraints>
             <point key="canvasLocation" x="240" y="285"/>
         </view>
+        <tapGestureRecognizer id="EBB-Dq-mSR">
+            <connections>
+                <action selector="tapProgressBackground:" destination="-1" id="1nt-t0-Y1O"/>
+            </connections>
+        </tapGestureRecognizer>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="U6H-I9-TDZ">
+            <connections>
+                <action selector="panSliderButton:" destination="-1" id="Vtd-1b-5VE"/>
+            </connections>
+        </panGestureRecognizer>
     </objects>
     <resources>
         <image name="lyric_normal" width="41" height="48"/>
