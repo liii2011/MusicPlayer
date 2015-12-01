@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ZJPlayingViewController">
             <connections>
+                <outlet property="playOrPauseButton" destination="Px2-0Q-wHP" id="RUw-18-dAp"/>
                 <outlet property="playingTime" destination="u7n-lD-P9Z" id="kJV-6k-WeE"/>
                 <outlet property="showTimeLabel" destination="5EW-Dw-qQx" id="dfL-Dn-fGc"/>
                 <outlet property="singerIcon" destination="s83-sj-CnY" id="mlm-7g-bww"/>
@@ -51,17 +52,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AMQ-aY-ilE" userLabel="底部控制器View">
                     <rect key="frame" x="0.0" y="440" width="600" height="160"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Px2-0Q-wHP" userLabel="播放按钮">
-                            <rect key="frame" x="260" y="70" width="80" height="80"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="80" id="3Gy-9A-mEg"/>
-                                <constraint firstAttribute="height" constant="80" id="thR-jX-bJo"/>
-                            </constraints>
-                            <state key="normal" image="pause">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="selected" image="play"/>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOH-3e-GHK" userLabel="上一首按钮">
                             <rect key="frame" x="188" y="84" width="52" height="52"/>
                             <constraints>
@@ -71,12 +61,18 @@
                             <state key="normal" image="previous">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="previousButtonClick" destination="-1" eventType="touchUpInside" id="o4v-Dq-5Th"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqC-vb-gPB" userLabel="下一首按钮">
                             <rect key="frame" x="360" y="84" width="52" height="52"/>
                             <state key="normal" image="next">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="nextButtonClick" destination="-1" eventType="touchUpInside" id="99D-mM-VEe"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Jg-oF-ID8" userLabel="进度条背景">
                             <rect key="frame" x="0.0" y="55" width="600" height="5"/>
@@ -137,6 +133,20 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Px2-0Q-wHP" userLabel="播放按钮">
+                            <rect key="frame" x="260" y="70" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="3Gy-9A-mEg"/>
+                                <constraint firstAttribute="height" constant="80" id="thR-jX-bJo"/>
+                            </constraints>
+                            <state key="normal" image="pause">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="play"/>
+                            <connections>
+                                <action selector="playOrPauseButtonClick" destination="-1" eventType="touchUpInside" id="LNI-ei-TDP"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="calibratedRGB"/>
                     <constraints>

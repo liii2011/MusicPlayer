@@ -29,21 +29,44 @@
 @property (weak, nonatomic) IBOutlet UIImageView *singerIcon;
 /** 歌曲播放总时长Label */
 @property (weak, nonatomic) IBOutlet UILabel *playingTime;
-
 /** 滑块按钮 */
 @property (weak, nonatomic) IBOutlet UIButton *sliderButton;
-/** 滑块左边的约束 */
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sliderLeftConstraint;
 /** 拖动的时候, 显示时间标签 */
 @property (weak, nonatomic) IBOutlet UILabel *showTimeLabel;
+/** 播放或暂停按钮 */
+@property (weak, nonatomic) IBOutlet UIButton *playOrPauseButton;
 
-/** 点击了退出, 返回主界面 */
+
+/** 滑块左边的约束 */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sliderLeftConstraint;
+
+/**
+ *  点击了退出, 返回主界面
+ */
 - (IBAction)exit;
 
-/** 监听tip点击手势 */
+/**
+ *  监听tip点击手势
+ */
 - (IBAction)tapProgressBackground:(UITapGestureRecognizer *)sender;
-/** 监听pan点击手势 */
+/**
+ *  监听pan点击手势
+ */
 - (IBAction)panSliderButton:(UIPanGestureRecognizer *)sender;
+
+/**
+ *  播放暂停按钮的点击
+ */
+- (IBAction)playOrPauseButtonClick;
+/**
+ *  上一首按钮的点击
+ */
+- (IBAction)previousButtonClick;
+/**
+ *  下一首按钮的点击
+ */
+- (IBAction)nextButtonClick;
+
 
 @end
 
@@ -57,6 +80,8 @@
     self.showTimeLabel.layer.masksToBounds = YES;
     // self.showTimeLabel.clipsToBounds = YES;
 }
+
+#pragma mark - 播放控制器相关方法
 
 // 显示播放控制器
 - (void)show
@@ -124,6 +149,9 @@
     
     // 开启定时器
     [self addProgressTimer];
+    
+    // 更改按钮的选中状态
+    self.playOrPauseButton.selected = NO;
 }
 
 // 停止正在播放的音乐, 清空数据
@@ -166,6 +194,8 @@
     NSInteger second = (NSInteger)time % 60;
     return [NSString stringWithFormat:@"%02ld:%02ld", minute, second];
 }
+
+#pragma mark - 定时器相关方法
 
 // 添加定时器
 - (void)addProgressTimer
@@ -268,6 +298,7 @@
         [self removeProgressTimer];
         // 显示时间标签
         self.showTimeLabel.hidden = NO;
+        
     } else if (sender.state == UIGestureRecognizerStateEnded) {
         // 设置播放位置
         self.currentPlayer.currentTime = currentTime;
@@ -276,6 +307,45 @@
         // 隐藏时间标签
         self.showTimeLabel.hidden = YES;
     }
+}
+
+#pragma mark - 控制播放按钮
+// 播放或暂停按钮
+- (IBAction)playOrPauseButtonClick {
+    // 按钮状态取反
+    self.playOrPauseButton.selected = !self.playOrPauseButton.selected;
+    
+    if (self.currentPlayer.playing) {
+        // 如果音乐正在播放, 就执行停止
+        [self.currentPlayer pause];
+        // 移除定时器
+        [self removeProgressTimer];
+    } else {
+        // 如果音乐处于停止, 就执行播放
+        [self.currentPlayer play];
+        // 添加定时器
+        [self addProgressTimer];
+    }
+}
+
+// 上一首按钮
+- (IBAction)previousButtonClick {
+    // 停止正在播放的音乐
+    [self stopPlayingMusic];
+    // 设置上一首为要播放的音乐
+    [ZJMusicTool previousMusic];
+    // 开始播放音乐
+    [self startPlayingMusic];
+}
+
+// 下一首按钮
+- (IBAction)nextButtonClick {
+    // 停止正在播放的音乐
+    [self stopPlayingMusic];
+    // 设置下一首为要播放的音乐
+    [ZJMusicTool nextMusic];
+    // 开始播放音乐
+    [self startPlayingMusic];
 }
 
 @end
