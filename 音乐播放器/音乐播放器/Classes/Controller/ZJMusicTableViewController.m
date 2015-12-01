@@ -24,15 +24,6 @@
 
 @implementation ZJMusicTableViewController
 
-//// 懒加载
-//- (NSArray *)musics
-//{
-//    if (_musics == nil) {
-//        _musics = [ZJMusic objectArrayWithFilename:@"Musics.plist"];
-//    }
-//    return _musics;
-//}
-
 // 懒加载一个播放控制器
 - (ZJPlayingViewController *)playingVc
 {
@@ -47,16 +38,6 @@
     
     // 设置cell 行高
     self.tableView.rowHeight = 70;
-    
-    // 返回模型数组
-//    NSArray *musics = [ZJMusicTool musics];
-//    NSLog(@"%@", musics);
-
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source

@@ -18,15 +18,23 @@
 @property (nonatomic, strong) ZJMusic *playingMusic;
 /** 进度定时器 */
 @property (nonatomic, strong) NSTimer *progressTimer;
+/** 记录当前播放器 */
+@property (nonatomic, strong) AVAudioPlayer *currentPlayer;
 
 /** 歌曲名标签 */
 @property (weak, nonatomic) IBOutlet UILabel *songLabel;
 /** 歌手名标签 */
 @property (weak, nonatomic) IBOutlet UILabel *singerLabel;
-/** 歌手封面照 */
+/** 歌手封面ImageView */
 @property (weak, nonatomic) IBOutlet UIImageView *singerIcon;
-/** 歌曲播放时间 */
+/** 歌曲播放总时长Label */
 @property (weak, nonatomic) IBOutlet UILabel *playingTime;
+
+/** 滑块按钮 */
+@property (weak, nonatomic) IBOutlet UIButton *sliderButton;
+/** 滑块左边的约束 */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *sliderLeftConstraint;
+
 
 /** 退出 */
 - (IBAction)exit;
@@ -86,25 +94,25 @@
         return;
     }
     
-//    // 判断如果本次播放的歌曲, 和上次播放的歌曲不一样, 再设置数据
-//    if (playingMusic != self.playingMusic) {
-        // 记录本次播放的歌曲
-        self.playingMusic = playingMusic;
-        
-        // 设置歌曲名, 歌手名, 封面图片
-        self.songLabel.text = playingMusic.name;
-        self.singerLabel.text = playingMusic.singer;
-        self.singerIcon.image = [UIImage imageNamed:playingMusic.icon];
-        
-        // 播放音乐
-        AVAudioPlayer *player = [ZJAudioTool playMusicWithName:playingMusic.filename];
-        
-        // 显示播放时间
-        self.playingTime.text = [self stringWithTime:player.duration];
-        
-        // 开启定时器
-        [self addProgressTimer];
-//    }
+    // 记录本次播放的歌曲
+    self.playingMusic = playingMusic;
+    
+    // 设置歌曲名, 歌手名, 封面图片
+    self.songLabel.text = playingMusic.name;
+    self.singerLabel.text = playingMusic.singer;
+    self.singerIcon.image = [UIImage imageNamed:playingMusic.icon];
+    
+    // 播放音乐
+    AVAudioPlayer *player = [ZJAudioTool playMusicWithName:playingMusic.filename];
+    // 保存播放器
+    self.currentPlayer = player;
+    // 显示播放时间
+    self.playingTime.text = [self stringWithTime:player.duration];
+    // 更新滑块的位置
+    [self updateInfo];
+    
+    // 开启定时器
+    [self addProgressTimer];
 }
 
 // 停止正在播放的音乐, 清空数据
@@ -114,7 +122,7 @@
     self.songLabel.text = nil;
     self.singerLabel.text = nil;
     self.singerIcon.image = [UIImage imageNamed:@"play_cover_pic_bg"];
-    
+
     // 停止正在播放的音乐
     [ZJAudioTool stopMusicWithName:self.playingMusic.filename];
     
@@ -166,10 +174,19 @@
     self.progressTimer = nil;
 }
 
+#pragma mark - 更新进度条
+
 // 更新数据
 - (void)updateInfo
 {
-    NSLog(@"更新数据...");
+    // 计算音乐播放的比例, 更新滑块的位置
+    AVAudioPlayer *player = self.currentPlayer;
+    CGFloat progressRatio = player.currentTime / player.duration;
+    self.sliderLeftConstraint.constant = progressRatio * (self.view.sizeWidth - self.sliderButton.sizeWidth);
+    
+    // 把时间显示到滑块
+    NSString *currentTime = [self stringWithTime:self.currentPlayer.currentTime];
+    [self.sliderButton setTitle:currentTime forState:UIControlStateNormal];
 }
 
 @end
