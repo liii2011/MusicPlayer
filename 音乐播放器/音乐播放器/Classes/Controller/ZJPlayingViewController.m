@@ -12,7 +12,7 @@
 #import "ZJMusic.h"
 #import "ZJAudioTool.h"
 
-@interface ZJPlayingViewController ()
+@interface ZJPlayingViewController () <AVAudioPlayerDelegate>
 
 /** 记录正在播放的音乐 */
 @property (nonatomic, strong) ZJMusic *playingMusic;
@@ -142,6 +142,10 @@
     AVAudioPlayer *player = [ZJAudioTool playMusicWithName:playingMusic.filename];
     // 保存播放器
     self.currentPlayer = player;
+    
+    // 设置代理
+    player.delegate = self;
+    
     // 显示播放时间
     self.playingTime.text = [self stringWithTime:player.duration];
     // 更新滑块的位置
@@ -247,7 +251,8 @@
         constant = 0;
     // 如果点在右边的无效位置
     } else if (tapPoint.x >= viewWidth - sliderButtonWidth * 0.5) {
-        constant = viewWidth - sliderButtonWidth;
+        // (-1的作用, 让系统自动播放下一首, 调用代理方法)
+        constant = viewWidth - sliderButtonWidth - 1;
     // 如果点在有效位置
     } else {
         constant = tapPoint.x - sliderButtonWidth * 0.5;
@@ -274,8 +279,8 @@
         // 如果点在左边的无效位置
         self.sliderLeftConstraint.constant = 0;
     } else if (self.sliderLeftConstraint.constant + panPoint.x >= self.view.sizeWidth - self.sliderButton.sizeWidth) {
-        // 如果点在右边的无效位置
-        self.sliderLeftConstraint.constant = self.view.sizeWidth - self.sliderButton.sizeWidth;
+        // 如果点在右边的无效位置(-1的作用, 让系统自动播放下一首, 调用代理方法)
+        self.sliderLeftConstraint.constant = self.view.sizeWidth - self.sliderButton.sizeWidth -1 ;
     } else {
         // 改变滑块左边的约束, 让滑块移动
         self.sliderLeftConstraint.constant += panPoint.x;
@@ -346,6 +351,30 @@
     [ZJMusicTool nextMusic];
     // 开始播放音乐
     [self startPlayingMusic];
+}
+
+#pragma mark - AVAudioPlayerDelegate代理方法
+// 播放完成时执行
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    if (flag) {
+        // 播放下一首
+        [self nextButtonClick];
+    }
+}
+
+// 打断开始的时候执行
+- (void)audioPlayerBeginInterruption:(AVAudioPlayer *)player
+{
+    // 点击开始或暂停按钮
+    [self playOrPauseButton];
+}
+
+// 打断接收的时候执行
+- (void)audioPlayerEndInterruption:(AVAudioPlayer *)player
+{
+    // 点击开始或暂停按钮
+    [self playOrPauseButton];
 }
 
 @end
