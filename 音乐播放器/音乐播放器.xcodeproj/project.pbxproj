@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E5553761C0F266400A9364E /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5553751C0F266400A9364E /* UIView+Frame.m */; settings = {ASSET_TAGS = (); }; };
 		2E5A09411C0DDE9C00F64E84 /* DRNRealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A093E1C0DDE9C00F64E84 /* DRNRealTimeBlurView.m */; settings = {ASSET_TAGS = (); }; };
 		2E5A09421C0DDE9C00F64E84 /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A09401C0DDE9C00F64E84 /* UIImage+BoxBlur.m */; settings = {ASSET_TAGS = (); }; };
 		2E5A09451C0DDEC700F64E84 /* ZJLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E5A09441C0DDEC700F64E84 /* ZJLrcView.m */; settings = {ASSET_TAGS = (); }; };
@@ -66,7 +67,6 @@
 		2E7AEE781C0B0C9C00D7EAF6 /* UIImage+CircleClip.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE771C0B0C9C00D7EAF6 /* UIImage+CircleClip.m */; settings = {ASSET_TAGS = (); }; };
 		2E7AEE7C1C0B173F00D7EAF6 /* ZJPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE7A1C0B173F00D7EAF6 /* ZJPlayingViewController.m */; settings = {ASSET_TAGS = (); }; };
 		2E7AEE7D1C0B173F00D7EAF6 /* ZJPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E7AEE7B1C0B173F00D7EAF6 /* ZJPlayingViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		2E7AEE801C0B1DA700D7EAF6 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE7F1C0B1DA700D7EAF6 /* UIView+Frame.m */; settings = {ASSET_TAGS = (); }; };
 		2E7AEE831C0B486C00D7EAF6 /* ZJMusicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE821C0B486C00D7EAF6 /* ZJMusicTool.m */; settings = {ASSET_TAGS = (); }; };
 		2E7AEE861C0C683F00D7EAF6 /* ZJAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E7AEE851C0C683F00D7EAF6 /* ZJAudioTool.m */; settings = {ASSET_TAGS = (); }; };
 		2ECCC1C61C0865AC0067FA78 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ECCC1C51C0865AC0067FA78 /* main.m */; };
@@ -76,6 +76,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E5553741C0F266400A9364E /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		2E5553751C0F266400A9364E /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		2E5A093D1C0DDE9C00F64E84 /* DRNRealTimeBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNRealTimeBlurView.h; sourceTree = "<group>"; };
 		2E5A093E1C0DDE9C00F64E84 /* DRNRealTimeBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNRealTimeBlurView.m; sourceTree = "<group>"; };
 		2E5A093F1C0DDE9C00F64E84 /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BoxBlur.h"; sourceTree = "<group>"; };
@@ -153,8 +155,6 @@
 		2E7AEE791C0B173F00D7EAF6 /* ZJPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJPlayingViewController.h; sourceTree = "<group>"; };
 		2E7AEE7A1C0B173F00D7EAF6 /* ZJPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJPlayingViewController.m; sourceTree = "<group>"; };
 		2E7AEE7B1C0B173F00D7EAF6 /* ZJPlayingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZJPlayingViewController.xib; sourceTree = "<group>"; };
-		2E7AEE7E1C0B1DA700D7EAF6 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
-		2E7AEE7F1C0B1DA700D7EAF6 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		2E7AEE811C0B486C00D7EAF6 /* ZJMusicTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJMusicTool.h; sourceTree = "<group>"; };
 		2E7AEE821C0B486C00D7EAF6 /* ZJMusicTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJMusicTool.m; sourceTree = "<group>"; };
 		2E7AEE841C0C683F00D7EAF6 /* ZJAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAudioTool.h; sourceTree = "<group>"; };
@@ -238,8 +238,8 @@
 			children = (
 				2E7AEE761C0B0C9C00D7EAF6 /* UIImage+CircleClip.h */,
 				2E7AEE771C0B0C9C00D7EAF6 /* UIImage+CircleClip.m */,
-				2E7AEE7E1C0B1DA700D7EAF6 /* UIView+Frame.h */,
-				2E7AEE7F1C0B1DA700D7EAF6 /* UIView+Frame.m */,
+				2E5553741C0F266400A9364E /* UIView+Frame.h */,
+				2E5553751C0F266400A9364E /* UIView+Frame.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -525,6 +525,7 @@
 				2E7AEE831C0B486C00D7EAF6 /* ZJMusicTool.m in Sources */,
 				2E7AEE6E1C0B060000D7EAF6 /* MJIvar.m in Sources */,
 				2E7AEE711C0B060000D7EAF6 /* MJType.m in Sources */,
+				2E5553761C0F266400A9364E /* UIView+Frame.m in Sources */,
 				2ECCC1C61C0865AC0067FA78 /* main.m in Sources */,
 				2E5A09411C0DDE9C00F64E84 /* DRNRealTimeBlurView.m in Sources */,
 				2E7AEE6D1C0B060000D7EAF6 /* MJArgument.m in Sources */,
@@ -533,7 +534,6 @@
 				2E7AEE581C0AFA7300D7EAF6 /* ZJMusic.m in Sources */,
 				2E7AEE721C0B060000D7EAF6 /* MJTypeEncoding.m in Sources */,
 				2E7AEE731C0B060000D7EAF6 /* NSObject+MJCoding.m in Sources */,
-				2E7AEE801C0B1DA700D7EAF6 /* UIView+Frame.m in Sources */,
 				2E7AEE6F1C0B060000D7EAF6 /* MJMember.m in Sources */,
 				2E7AEE701C0B060000D7EAF6 /* MJMethod.m in Sources */,
 				2E5A09451C0DDEC700F64E84 /* ZJLrcView.m in Sources */,
