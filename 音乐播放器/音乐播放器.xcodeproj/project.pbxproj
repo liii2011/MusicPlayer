@@ -73,6 +73,7 @@
 		2ECCC1CF1C0865AC0067FA78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCC1CD1C0865AC0067FA78 /* Main.storyboard */; };
 		2ECCC1D11C0865AC0067FA78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCC1D01C0865AC0067FA78 /* Assets.xcassets */; };
 		2ECCC1D41C0865AC0067FA78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCC1D21C0865AC0067FA78 /* LaunchScreen.storyboard */; };
+		2EFD318C1C0F2A1D003CBB51 /* ZJLrcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFD318B1C0F2A1D003CBB51 /* ZJLrcCell.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -165,6 +166,8 @@
 		2ECCC1D01C0865AC0067FA78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2ECCC1D31C0865AC0067FA78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2ECCC1D51C0865AC0067FA78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2EFD318A1C0F2A1D003CBB51 /* ZJLrcCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJLrcCell.h; sourceTree = "<group>"; };
+		2EFD318B1C0F2A1D003CBB51 /* ZJLrcCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJLrcCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +261,8 @@
 			children = (
 				2E5A09431C0DDEC700F64E84 /* ZJLrcView.h */,
 				2E5A09441C0DDEC700F64E84 /* ZJLrcView.m */,
+				2EFD318A1C0F2A1D003CBB51 /* ZJLrcCell.h */,
+				2EFD318B1C0F2A1D003CBB51 /* ZJLrcCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -541,6 +546,7 @@
 				2E7AEE781C0B0C9C00D7EAF6 /* UIImage+CircleClip.m in Sources */,
 				2E7AEDFE1C0AF5DD00D7EAF6 /* AppDelegate.m in Sources */,
 				2E7AEE751C0B060000D7EAF6 /* NSObject+MJMember.m in Sources */,
+				2EFD318C1C0F2A1D003CBB51 /* ZJLrcCell.m in Sources */,
 				2E5A09421C0DDE9C00F64E84 /* UIImage+BoxBlur.m in Sources */,
 				2E7AEE7C1C0B173F00D7EAF6 /* ZJPlayingViewController.m in Sources */,
 			);

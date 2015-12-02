@@ -8,6 +8,7 @@
 
 #import "ZJLrcView.h"
 #import "UIView+Frame.h"
+#import "ZJLrcCell.h"
 
 @interface ZJLrcView () <UITableViewDelegate, UITableViewDataSource>
 
@@ -31,7 +32,7 @@
     // 去除背景色, 去除分割线
     tableView.backgroundColor = [UIColor clearColor];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    tableView.allowsSelection = NO; // 取消cell的选中状态
+    // tableView.allowsSelection = NO; // 取消cell的选中状态
     tableView.contentInset = UIEdgeInsetsMake(tableView.sizeHeight * 0.5, 0, tableView.sizeHeight * 0.5, 0);
     
     // 设置代理和数据源
@@ -46,8 +47,8 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    // 设置frame, 内边距
     self.tableView.frame = self.bounds;
-    
 }
 
 
@@ -62,21 +63,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 创建cell
-    static NSString *reuseId = @"lrcCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseId];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseId];
-    }
+    ZJLrcCell *cell = [ZJLrcCell lrcCellWithTableView:tableView];
     
     // 设置数据
-    cell.textLabel.text = @"123";
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
+    cell.textLabel.text = [NSString stringWithFormat:@"%zd", indexPath.row];
     
-    // 去除背景, 取消选中状态
-    cell.backgroundColor = [UIColor clearColor];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    // 返回cell
     return cell;
 }
 
