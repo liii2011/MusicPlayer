@@ -10,4 +10,7 @@
 
 @interface ZJLrcView : DRNRealTimeBlurView
 
+/** 歌曲名称 */
+@property (nonatomic, copy) NSString *lrcName;
+
 @end

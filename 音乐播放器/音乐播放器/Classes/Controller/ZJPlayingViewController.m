@@ -145,6 +145,9 @@
     self.singerLabel.text = playingMusic.singer;
     self.singerIcon.image = [UIImage imageNamed:playingMusic.icon];
     
+    // 把歌曲名传递给歌词view
+    self.lrcView.lrcName = self.playingMusic.lrcname;
+    
     // 播放音乐
     AVAudioPlayer *player = [ZJAudioTool playMusicWithName:playingMusic.filename];
     // 保存播放器
@@ -155,6 +158,7 @@
     
     // 显示播放时间
     self.playingTime.text = [self stringWithTime:player.duration];
+    
     // 更新滑块的位置
     [self updateInfo];
     
@@ -364,6 +368,9 @@
 - (IBAction)lrcOrPicButton:(UIButton *)sender {
     sender.selected = !sender.selected;
     self.lrcView.hidden = !self.lrcView.hidden;
+    
+    // 把歌曲名传递给歌词view
+//    self.lrcView.lrcName = self.playingMusic.lrcname;
 }
 
 #pragma mark - AVAudioPlayerDelegate代理方法

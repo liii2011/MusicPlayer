@@ -12,7 +12,10 @@
 
 @interface ZJLrcView () <UITableViewDelegate, UITableViewDataSource>
 
+/** 用于在歌词view中展示歌词 */
 @property (nonatomic, weak) UITableView *tableView;
+/** 歌词数组 */
+@property (nonatomic, strong) NSArray *lrcLines;
 
 @end
 
@@ -72,6 +75,19 @@
     return cell;
 }
 
-#pragma mark - tableView的代理方法
+#pragma mark - 获取歌词数据
+// 重写setter
+- (void)setLrcName:(NSString *)lrcName
+{
+    //1 保存歌名
+    _lrcName = lrcName;
+    
+    //2 解析歌词
+    NSString *path = [[NSBundle mainBundle] pathForResource:lrcName ofType:nil];
+    NSString *lrc = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    NSLog(@"%@", lrc);
+    
+    //3 添加到数组
+}
 
 @end
