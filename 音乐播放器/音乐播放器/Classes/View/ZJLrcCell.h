@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class ZJLrcLine;
 @interface ZJLrcCell : UITableViewCell
+
+/** 歌词模型 */
+@property (nonatomic, strong) ZJLrcLine *lrcLine;
 
 /** 创建歌词cell */
 + (instancetype)lrcCellWithTableView:(UITableView *)tableView;

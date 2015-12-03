@@ -74,6 +74,7 @@
 		2ECCC1D11C0865AC0067FA78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCC1D01C0865AC0067FA78 /* Assets.xcassets */; };
 		2ECCC1D41C0865AC0067FA78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ECCC1D21C0865AC0067FA78 /* LaunchScreen.storyboard */; };
 		2EFD318C1C0F2A1D003CBB51 /* ZJLrcCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFD318B1C0F2A1D003CBB51 /* ZJLrcCell.m */; settings = {ASSET_TAGS = (); }; };
+		2EFD31FA1C1053A6003CBB51 /* ZJLrcLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EFD31F91C1053A6003CBB51 /* ZJLrcLine.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -168,6 +169,8 @@
 		2ECCC1D51C0865AC0067FA78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2EFD318A1C0F2A1D003CBB51 /* ZJLrcCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJLrcCell.h; sourceTree = "<group>"; };
 		2EFD318B1C0F2A1D003CBB51 /* ZJLrcCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJLrcCell.m; sourceTree = "<group>"; };
+		2EFD31F81C1053A6003CBB51 /* ZJLrcLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJLrcLine.h; sourceTree = "<group>"; };
+		2EFD31F91C1053A6003CBB51 /* ZJLrcLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJLrcLine.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +223,8 @@
 			children = (
 				2E7AEE561C0AFA7300D7EAF6 /* ZJMusic.h */,
 				2E7AEE571C0AFA7300D7EAF6 /* ZJMusic.m */,
+				2EFD31F81C1053A6003CBB51 /* ZJLrcLine.h */,
+				2EFD31F91C1053A6003CBB51 /* ZJLrcLine.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -530,6 +535,7 @@
 				2E7AEE831C0B486C00D7EAF6 /* ZJMusicTool.m in Sources */,
 				2E7AEE6E1C0B060000D7EAF6 /* MJIvar.m in Sources */,
 				2E7AEE711C0B060000D7EAF6 /* MJType.m in Sources */,
+				2EFD31FA1C1053A6003CBB51 /* ZJLrcLine.m in Sources */,
 				2E5553761C0F266400A9364E /* UIView+Frame.m in Sources */,
 				2ECCC1C61C0865AC0067FA78 /* main.m in Sources */,
 				2E5A09411C0DDE9C00F64E84 /* DRNRealTimeBlurView.m in Sources */,

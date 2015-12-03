@@ -7,6 +7,7 @@
 //
 
 #import "ZJLrcCell.h"
+#import "ZJLrcLine.h"
 
 @implementation ZJLrcCell
 
@@ -30,14 +31,12 @@
     return cell;
 }
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+// 用于接收每行歌词的模型, 给cell的子控件设置数据
+- (void)setLrcLine:(ZJLrcLine *)lrcLine
+{
+    _lrcLine = lrcLine;
+    
+    self.textLabel.text = lrcLine.text;
 }
 
 @end
