@@ -19,6 +19,8 @@
 @property (nonatomic, strong) ZJMusic *playingMusic;
 /** 进度定时器 */
 @property (nonatomic, strong) NSTimer *progressTimer;
+/** 歌词定时器 */
+@property (nonatomic, strong) CADisplayLink *lrcTimer;
 /** 记录当前播放器 */
 @property (nonatomic, strong) AVAudioPlayer *currentPlayer;
 
@@ -134,6 +136,7 @@
     if (playingMusic == self.playingMusic) {
         // 开启定时器
         [self addProgressTimer];
+        [self addLrcTimer];
         return;
     }
     
@@ -164,6 +167,7 @@
     
     // 开启定时器
     [self addProgressTimer];
+    [self addLrcTimer];
     
     // 更改按钮的选中状态
     self.playOrPauseButton.selected = NO;
@@ -180,8 +184,9 @@
     // 停止正在播放的音乐
     [ZJAudioTool stopMusicWithName:self.playingMusic.filename];
     
-    // 移除定时器
+    // 移除进度条定时器
     [self removeProgressTimer];
+    [self removeLrcTimer];
 }
 
 // 退出播放控制器
@@ -198,6 +203,7 @@
         window.userInteractionEnabled = YES;
         //4 移除定时器
         [self removeProgressTimer];
+        [self removeLrcTimer];
     }];
 }
 
@@ -212,7 +218,7 @@
 
 #pragma mark - 定时器相关方法
 
-// 添加定时器
+// 添加播放进度定时器
 - (void)addProgressTimer
 {
     // 给当前控制器添加定时器
@@ -221,7 +227,7 @@
     [[NSRunLoop mainRunLoop] addTimer:self.progressTimer forMode:NSRunLoopCommonModes];
 }
 
-// 移除定时器
+// 移除播放进度定时器
 - (void)removeProgressTimer
 {
     // 关闭定时器
@@ -229,8 +235,6 @@
     // 回收指针
     self.progressTimer = nil;
 }
-
-#pragma mark - 进度条相关方法
 
 // 更新数据
 - (void)updateInfo
@@ -246,6 +250,37 @@
     NSString *currentTime = [self stringWithTime:self.currentPlayer.currentTime];
     [self.sliderButton setTitle:currentTime forState:UIControlStateNormal];
 }
+
+#pragma mark - 歌词定时器
+// 添加歌词定时器
+- (void)addLrcTimer
+{
+    // 如果歌词view是隐藏的, 就不添加定时器; 否则添加
+    if (self.lrcView.hidden) {
+        return;
+    }
+    
+    self.lrcTimer = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateLrc)];
+    [self.lrcTimer addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    
+    [self updateLrc];
+}
+
+// 移除歌词定时器
+- (void)removeLrcTimer
+{
+    [self.lrcTimer invalidate];
+    self.lrcTimer = nil;
+}
+
+// 更新歌词
+- (void)updateLrc
+{
+//    self.lrcView.currentTime = self.currentPlayer.currentTime;
+    NSLog(@"更新歌词...");
+}
+
+#pragma mark - 进度条相关方法
 
 // 点击手势
 - (IBAction)tapProgressBackground:(UITapGestureRecognizer *)sender {
@@ -336,11 +371,13 @@
         [self.currentPlayer pause];
         // 移除定时器
         [self removeProgressTimer];
+        [self removeLrcTimer];
     } else {
         // 如果音乐处于停止, 就执行播放
         [self.currentPlayer play];
         // 添加定时器
         [self addProgressTimer];
+        [self addLrcTimer];
     }
 }
 
@@ -366,11 +403,12 @@
 
 // 歌词和图片按钮的点击事件
 - (IBAction)lrcOrPicButton:(UIButton *)sender {
+    // 每次点击都更改按钮和歌词view的状态
     sender.selected = !sender.selected;
     self.lrcView.hidden = !self.lrcView.hidden;
     
-    // 把歌曲名传递给歌词view
-//    self.lrcView.lrcName = self.playingMusic.lrcname;
+    // 隐藏的时候移除定时器, 显示的时候添加定时器
+    self.lrcView.hidden ? [self removeLrcTimer] : [self addLrcTimer];
 }
 
 #pragma mark - AVAudioPlayerDelegate代理方法

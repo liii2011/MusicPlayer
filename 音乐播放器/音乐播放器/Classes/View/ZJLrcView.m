@@ -137,4 +137,13 @@
     [self.tableView reloadData];
 }
 
+#pragma mark - 更新歌词
+// 获取歌词, 实现歌词滚动
+- (void)setCurrentTime:(NSTimeInterval)currentTime
+{
+    _currentTime  = currentTime;
+    
+    NSLog(@"定时器时间: %f", currentTime);
+}
+
 @end
