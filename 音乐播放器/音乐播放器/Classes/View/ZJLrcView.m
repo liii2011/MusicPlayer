@@ -17,6 +17,8 @@
 @property (nonatomic, weak) UITableView *tableView;
 /** 歌词数组 */
 @property (nonatomic, strong) NSArray *lrcLines;
+/** 存储当前滚动到的行 */
+@property (nonatomic, assign) NSInteger currentIndex;
 
 @end
 
@@ -141,9 +143,42 @@
 // 获取歌词, 实现歌词滚动
 - (void)setCurrentTime:(NSTimeInterval)currentTime
 {
+    // 接收并保持时间(290.385714 分钟.秒)
     _currentTime  = currentTime;
     
-    NSLog(@"定时器时间: %f", currentTime);
+    // 计算分钟, 秒数, 毫秒(290.324150 - 290) * 1000, 拼接为指定格式
+    NSInteger minute = currentTime / 60;
+    NSInteger second = (NSInteger)currentTime % 60;
+    NSInteger millisecond = (currentTime - (NSInteger)currentTime) * 100;
+    NSString *currentTimeStr = [NSString stringWithFormat:@"%02ld:%02ld.%02ld", minute, second, millisecond];
+    
+    // 对比时间
+    NSInteger count = self.lrcLines.count;
+    for (int i=0; i<count; i++) {
+        
+        //1 取出当前歌词的模型
+        ZJLrcLine *currentLrcLine = self.lrcLines[i];
+        
+        //2 取出下一个歌词模型
+        NSInteger nextIndex = i + 1;
+        if (nextIndex < count) { // 防止越界
+            ZJLrcLine *nextLrcLine = self.lrcLines[nextIndex];
+            
+            // 如果时间大于等于当前歌词的时间, 或小于等于下一个歌词的时间, 同时有不和上一条歌词时间重复
+            if ([currentTimeStr compare:currentLrcLine.time] != NSOrderedAscending && [currentTimeStr compare:nextLrcLine.time] != NSOrderedDescending &&
+                self.currentIndex != i) {
+                
+                // 记录当前行, 用于比较
+                self.currentIndex = i;
+                
+                // 就让tableView滚动指定位置
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+                [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            }
+        }
+        
+        
+    }
 }
 
 @end

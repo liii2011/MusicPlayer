@@ -276,8 +276,8 @@
 // 更新歌词
 - (void)updateLrc
 {
-//    self.lrcView.currentTime = self.currentPlayer.currentTime;
-    NSLog(@"更新歌词...");
+    self.lrcView.currentTime = self.currentPlayer.currentTime;
+//    NSLog(@"更新歌词...");
 }
 
 #pragma mark - 进度条相关方法
